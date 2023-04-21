@@ -1,0 +1,5 @@
+rootProject.name = 'spring-cloud-sample'
+include 'eureka'
+include 'gateway'
+include 'order-service'
+
