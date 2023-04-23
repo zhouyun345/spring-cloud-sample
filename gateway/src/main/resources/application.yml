@@ -13,8 +13,17 @@ spring:
           predicates:
             - Path=/pos/orderservice/api/test
           filters:
-            - StripPrefix=3
+            - StripPrefix=2
             - PrefixPath=/v1/order
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, gateway
+  endpoint:
+    gateway:
+      enabled: true
 
 server:
   port: 8888
