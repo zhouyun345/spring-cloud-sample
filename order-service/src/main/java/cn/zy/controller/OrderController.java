@@ -1,20 +1,21 @@
 package cn.zy.controller;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/v1/order")
+@RequestMapping("")
 public class OrderController {
 
-  @Value("${name}")
+//  @Value("${name}")
   private String name;
 
-  @GetMapping("/test")
-  public String test() {
-    return name;
+  @GetMapping("/finderchina/api/v2/listing/vehicle")
+  public String test(@RequestParam("marketplace") String marketplace,
+      @RequestParam("language") String language, @RequestParam("vin") String vin) {
+    return marketplace + language + vin;
   }
 
 }

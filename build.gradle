@@ -1,6 +1,6 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '2.6.7' apply false
+	id 'org.springframework.boot' version '2.1.18.RELEASE' apply false
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE' apply false
 }
 
@@ -19,11 +19,12 @@ subprojects {
 	}
 
 	ext {
-		set('springCloudVersion', "2021.0.6")
+		set('springCloudVersion', "Greenwich.SR6")
 	}
 
 	dependencies {
-
+		compileOnly 'org.projectlombok:lombok:1.18.8'
+		annotationProcessor 'org.projectlombok:lombok:1.18.8'
 	}
 
 	dependencyManagement {

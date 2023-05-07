@@ -33,9 +33,9 @@ public class RouteService implements ApplicationRunner, ApplicationEventPublishe
     definition.setFilters(filterList);
     definition.setId("order-service");
     definition.setUri(URI.create("lb://order-service"));
-    definition.setOrder(0);
-    this.buildRoutePredict("/pos/orderservice/api/test", definition);
-    this.buildPrefix(3, "/v1/order", definition);
+    definition.setOrder(-2);
+    this.buildRoutePredict("/finderchina/finder-proxy/price-tag/vehicle", definition);
+    this.buildPrefix(5, "/finderchina/api/v2/listing", definition);
 //    this.buildHystrix(customRoute, definition);
     routeDefinitionWriter.save(Mono.just(definition)).subscribe();
     this.publisher.publishEvent(new RefreshRoutesEvent(this));
@@ -44,7 +44,7 @@ public class RouteService implements ApplicationRunner, ApplicationEventPublishe
   private void buildPrefix(int count, String prefixPath, RouteDefinition routeDefinition) {
     if (count > 0) {
       FilterDefinition countFilter = new FilterDefinition();
-      countFilter.setName("StripPrefix");
+      countFilter.setName("CustomStripPrefix");
       countFilter.addArg("parts", Integer.toString(count));
       routeDefinition.getFilters().add(countFilter);
     }
